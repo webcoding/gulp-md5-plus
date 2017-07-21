@@ -28,6 +28,7 @@ module.exports = function (size, ifile, option) {
         , relativepath = path.relative(file.base ,file.path)
         , sub_namepath = relativepath.replace(new RegExp(filename) , "").split(pathsep).join('/')
         , dir;
+
         if(file.path[0] == '.'){
             dir = path.join(file.base, file.path);
         } else {
@@ -53,9 +54,9 @@ module.exports = function (size, ifile, option) {
                 i_ifile && glob(i_ifile,function(err, i_files){
                     if(err) return console.log(err);
                     i_files.forEach(function(i_ilist){
-                        var result = fs.readFileSync(i_ilist,'utf8').replace(new RegExp('/' + l_filename + '[^a-zA-Z_0-9].*?' ,"g"), function(sfile_name){
-                            return sfile_name.replace(l_filename,l_md5_filename)
-                        });
+                        var result = fs.readFileSync(i_ilist,'utf8').replace(new RegExp(sub_namepath + filename + '[^a-zA-Z_0-9].*?' ,"g"), function(sfile_name){
+                        return sfile_name.replace(sub_namepath + filename,sub_namepath + md5_filename)
+                    });
                         fs.writeFileSync(i_ilist, result, 'utf8');
                     })
                 })
@@ -64,8 +65,8 @@ module.exports = function (size, ifile, option) {
             ifile && glob(ifile,function(err, files){
                 if(err) return console.log(err);
                 files.forEach(function(ilist){
-                    var result = fs.readFileSync(ilist,'utf8').replace(new RegExp('/' + l_filename + '[^a-zA-Z_0-9].*?' ,"g"), function(sfile_name){
-                        return sfile_name.replace(l_filename,l_md5_filename)
+                    var result = fs.readFileSync(ilist,'utf8').replace(new RegExp(sub_namepath + filename + '[^a-zA-Z_0-9].*?' ,"g"), function(sfile_name){
+                        return sfile_name.replace(sub_namepath + filename,sub_namepath + md5_filename)
                     });
                     fs.writeFileSync(ilist, result, 'utf8');
                 })

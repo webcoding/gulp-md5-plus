@@ -1,6 +1,6 @@
 {
-  "name": "gulp-md5-plus",
-  "version": "1.0.3",
+  "name": "gulp-md5plus",
+  "version": "1.0.4",
   "description": "md5 the static file and change the names in the quoted html ",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wpfpizicai/gulp-md5-plus.git"
+    "url": "https://github.com/webcoding/gulp-md5-plus.git"
   },
   "keywords": [
     "gulp",
@@ -19,7 +19,7 @@
     "through2": "^0.4.1",
     "glob": "^4.0.6"
   },
-  "homepage": "https://github.com/wpfpizicai/gulp-md5-plus.git",
+  "homepage": "https://github.com/webcoding/gulp-md5-plus.git",
   "author": "wpfpizicai",
   "email": "tjuwpf@163.com",
   "license": "MIT",

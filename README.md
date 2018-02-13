@@ -2,6 +2,33 @@
 
 > md5 plugin for [gulp](https://github.com/wpfpizicai/gulp-md5-plus) ,md5 the static files(eg javascript style image files) ;then replace the filenames in css or the html if needed by passing the file or dir in the second parameter
 
+## 从gulp-util迁移
+
+使用这些步骤，您可以帮助插件作者从gulp-util迁移。
+
+运行npm ls gulp-util以获取依赖于它的插件列表。
+
+对于每个相关插件，运行npm issues {PLUGIN NAME}将打开问题跟踪器。
+
+使用以下API替换，打开问题或请求删除gulp-util：
+
+- gutil.File=> https://www.npmjs.com/package/vinyl
+- gutil.replaceExtension=> .extname乙烯基对象的  属性或https://www.npmjs.com/package/replace-ext
+- gutil.colors=> https://www.npmjs.com/package/ansi-colors
+- gutil.date=> https://www.npmjs.com/package/date-format
+- gutil.log=> https://www.npmjs.com/package/fancy-log
+- gutil.template=> https://www.npmjs.com/package/lodash.template
+- gutil.env=> https://www.npmjs.com/package/minimist
+- gutil.beep=> https://www.npmjs.com/package/beeper
+- gutil.noop=> https://www.npmjs.com/package/through2
+- gutil.isStream=> .isStream()在乙烯基对象上使用该  方法
+- gutil.isBuffer=> .isBuffer()在乙烯基对象上使用该  方法
+- gutil.isNull=> .isNull()在乙烯基对象上使用该  方法
+- gutil.linefeed=> '\n'在你的代码中使用字符串
+- gutil.combine=> https://www.npmjs.com/package/multipipe
+- gutil.buffer=> https://www.npmjs.com/package/list-stream
+- gutil.PluginError=> https://www.npmjs.com/package/plugin-error
+
 ## Usage
 
 
@@ -94,15 +121,15 @@ Type: `String`
 
 Default: `_`
 
-> used to set the output file‘s connector; if use `.` the outfile will look like `imgfile.5546983ac2.png` ,while default is `imgfile_5546983ac2.png` 
+> used to set the output file‘s connector; if use `.` the outfile will look like `imgfile.5546983ac2.png` ,while default is `imgfile_5546983ac2.png`
 
 
 ##### option.mappingFile
 Type: `String`
 
-Default: null 
+Default: null
 
-> set the file to write the mapping result ,for example `manifest.json`  
+> set the file to write the mapping result ,for example `manifest.json`
 
 after set this option ;you should remove this file before `gulp`; you can follow the demo;
 

@@ -1,11 +1,11 @@
 var path = require('path')
-, gutil = require('gulp-util')
 , through = require('through2')
 , crypto = require('crypto')
 , fs = require('fs')
 , glob = require('glob')
 , jsonfile = require('jsonfile')
-, pathsep = path.posix.sep;
+, pathsep = path.posix.sep
+, PluginError = require('plugin-error');
 
 module.exports = function (size, ifile, option) {
     size = size | 0;
@@ -15,7 +15,7 @@ module.exports = function (size, ifile, option) {
     return through.obj(function (file, enc, cb) {
 
         if (file.isStream()) {
-            this.emit('error', new gutil.PluginError('gulp-debug', 'Streaming not supported'));
+            this.emit('error', new PluginError('gulp-debug', 'Streaming not supported'));
             return cb();
         }
 
@@ -85,7 +85,7 @@ module.exports = function (size, ifile, option) {
                 fs.writeFileSync(option.mappingFile,"{}",'utf8');
             }
             jsonfile.writeFile(option.mappingFile, md5_mapping , {spaces: 2}, function(err) {
-                return new gutil.PluginError('gulp-debug', 'output mapping file error')
+                return new PluginError('gulp-debug', 'output mapping file error')
             });
         }
         cb();
